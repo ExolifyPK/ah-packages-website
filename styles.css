@@ -1,0 +1,161 @@
+:root{
+  --bg:#0e1116;
+  --panel:#151a23;
+  --muted:#9aa3b2;
+  --text:#e9eef6;
+  --brand:#ffbb33;
+  --brand-ink:#0b0f14;
+  --accent:#5bbcff;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--text);
+  background:radial-gradient(1200px 600px at 90% 10%,#1a2230 0%,#0e1116 55%) fixed;
+  line-height:1.6;
+  scroll-behavior:smooth;
+}
+img{max-width:100%;display:block}
+a{color:var(--accent);text-decoration:none}
+.container{width:min(1100px,92vw);margin-inline:auto}
+
+.site-header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(14,17,22,.7);backdrop-filter:blur(8px);
+  border-bottom:1px solid #222933;
+}
+.navbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 0;
+}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-mark{
+  background:linear-gradient(135deg,var(--brand) 0%,#ffd86b 100%);
+  color:var(--brand-ink);font-weight:800;border-radius:10px;padding:6px 10px
+}
+.brand-text{font-weight:700;letter-spacing:.4px}
+.nav{display:flex;gap:18px}
+.nav a{padding:8px 10px;border-radius:8px}
+.nav a:hover{background:#1b2230}
+.nav-toggle{display:none;background:none;border:0;color:var(--text);font-size:22px}
+
+.hero{padding:72px 0 32px;border-bottom:1px solid #1b2230}
+.hero-inner{display:grid;gap:24px;align-items:center}
+.hero-single{grid-template-columns:1fr}
+.hero-copy h1{margin:0 0 12px;font-size:44px;line-height:1.15}
+.hero-copy p{margin:0 0 22px;color:var(--muted)}
+.btn{display:inline-block;padding:10px 16px;border-radius:10px}
+.btn-primary{background:var(--brand);color:var(--brand-ink);font-weight:700}
+.btn-primary:hover{filter:brightness(1.05)}
+
+.section{padding:64px 0;border-bottom:1px solid #1b2230}
+.section h2{margin:0 0 16px;font-size:28px}
+.section.alt{background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)}
+
+.feature-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px
+}
+.card{
+  background:var(--panel);
+  border:1px solid #202737;border-radius:14px;padding:16px
+}
+.card h3{margin:0 0 6px}
+.muted{color:var(--muted)}
+
+.cta{background:linear-gradient(180deg,rgba(255,255,255,.03),transparent)}
+.cta-card{
+  background:#101620;border:1px solid #202737;border-radius:16px;
+  padding:28px;text-align:center
+}
+.cta-card h2{margin:0 0 8px}
+.cta-card p{margin:0 0 16px;color:var(--muted)}
+
+.contact-grid{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:16px
+}
+label{display:grid;gap:6px;margin-bottom:10px}
+input,textarea{
+  background:#0f131a;border:1px solid #2a3240;border-radius:10px;
+  padding:10px;color:var(--text);
+}
+input:focus,textarea:focus{outline:2px solid #334054;border-color:#334054}
+.form-msg{margin-top:8px}
+
+.site-footer{padding:20px 0}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #1b2230;padding-top:12px}
+.back-to-top{color:#b8c3d6}
+
+/* CLIENT LOGOS
+   - Single horizontal row
+   - Equal-size cards using fixed auto-columns
+   - Smooth color “fill-in” on hover
+   - Scrolls horizontally on small screens (no vertical stacking) */
+.logo-grid{
+  display:grid;
+  grid-auto-flow:column;           /* single row */
+  grid-auto-columns:220px;         /* equal card width */
+  gap:20px;
+  align-items:stretch;
+  overflow-x:auto;                 /* allow horizontal scroll if needed */
+  padding-bottom:6px;
+  scrollbar-width:thin;
+}
+.logo-grid img{
+  width:100%;
+  aspect-ratio:3/2;                /* equal card proportions */
+  object-fit:contain;
+  background:#0f131a;
+  border:1px solid #202737;
+  border-radius:12px;
+  padding:16px;
+  filter:grayscale(100%) saturate(80%) brightness(0.9);
+  opacity:.9;
+  transition:filter .25s ease, opacity .25s ease, transform .25s ease, background-color .25s ease;
+}
+.logo-grid img:hover{
+  filter:none;                     /* reveal full color */
+  opacity:1;
+  transform:translateY(-2px);
+  background:#131a24;              /* subtle fill on hover */
+}
+
+/* Journey timeline (about page) */
+.timeline{
+  list-style:none;
+  margin:18px 0 0;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.milestone{
+  background:var(--panel);
+  border:1px solid #202737;
+  border-radius:14px;
+  padding:16px;
+  position:relative;
+}
+.milestone::before{
+  content:"";
+  position:absolute;
+  top:-10px;left:16px;
+  width:18px;height:18px;border-radius:50%;
+  background:var(--brand);
+  box-shadow:0 0 0 3px rgba(255,187,51,.2);
+}
+
+@media (max-width:1200px){
+  .feature-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:920px){
+  .contact-grid{grid-template-columns:1fr}
+}
+@media (max-width:680px){
+  .nav{display:none}
+  .nav.open{display:flex;flex-direction:column;gap:8px;position:absolute;right:4vw;top:54px;background:#0f131a;border:1px solid #1f2630;border-radius:12px;padding:10px}
+  .nav-toggle{display:block}
+  .hero-copy h1{font-size:34px}
+  .feature-grid{grid-template-columns:1fr}
+  .timeline{grid-template-columns:1fr}
+}
